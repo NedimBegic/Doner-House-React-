@@ -5,17 +5,22 @@ import CartContext from "../../store/cart-context";
 import CartItem from "../Secondery/CartItem";
 
 const Cart = (props) => {
-  const ctxCart = useContext(CartContext);
+  const cartCtx = useContext(CartContext);
 
-  const totalAmount = `$${ctxCart.totalAmount.toFixed(2)}`;
-  const hasItems = ctxCart.items.length > 0;
+  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const hasItems = cartCtx.items.length > 0;
 
-  const cartItemRemoveHandler = (id) => {};
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
 
-  const cartItemAddHandler = (item) => {};
-  const cartitems = (
+  const cartItemAddHandler = (item) => {
+    cartCtx.addItem({ ...item, amount: 1 });
+  };
+
+  const cartItems = (
     <ul className={classes["cart-items"]}>
-      {ctxCart.items.map((item) => (
+      {cartCtx.items.map((item) => (
         <CartItem
           key={item.id}
           name={item.name}
@@ -29,8 +34,8 @@ const Cart = (props) => {
   );
 
   return (
-    <Modal onHideCart={props.onHideCart}>
-      {cartitems}
+    <Modal onClose={props.onHideCart}>
+      {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
         <span>{totalAmount}</span>
