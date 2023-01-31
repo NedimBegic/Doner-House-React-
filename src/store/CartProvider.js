@@ -39,8 +39,13 @@ const cartReducer = (state, action) => {
       updatedItems = state.items.filter((item) => item !== clickedItem[0]);
     } else {
       // substract 1 from item amount
-      clickedItem[0].amount = clickedItem[0].amount - 1;
+      const updatedItem = {
+        ...clickedItem[0],
+        amount: clickedItem[0].amount - 1,
+      };
+      let newItemIndex = state.items.indexOf(clickedItem[0]);
       updatedItems = [...state.items];
+      updatedItems[newItemIndex] = updatedItem;
     }
     return {
       items: updatedItems,
