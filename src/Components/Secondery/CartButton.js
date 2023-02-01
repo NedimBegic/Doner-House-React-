@@ -18,6 +18,19 @@ const CartButton = (props) => {
     " " +
     `${classes.button} ${btnIsHighlighted ? classes.bump : ""}`;
 
+  const { items } = ctxCart;
+  useEffect(() => {
+    if (items.length === 0) return;
+    setBtnIsHighlighted(true);
+
+    const timer = setTimeout(() => {
+      setBtnIsHighlighted(false);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }, 300);
+  }, [items]);
   return (
     <button className={btnClasses} onClick={props.onShowCart}>
       <span className={classes.icon}>

@@ -18,6 +18,9 @@ const Cart = (props) => {
     cartCtx.addItem({ ...item, amount: 1 });
   };
 
+  const onOrderHandler = (obj) => {
+    cartCtx.clear({ ...cartCtx });
+  };
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartCtx.items.map((item) => (
@@ -44,7 +47,14 @@ const Cart = (props) => {
         <button className={classes["button--alt"]} onClick={props.onHideCart}>
           Close
         </button>
-        {hasItems && <button className={classes.button}>Order</button>}
+        {hasItems && (
+          <button
+            onClick={onOrderHandler.bind(null, cartCtx)}
+            className={classes.button}
+          >
+            Order
+          </button>
+        )}
       </div>
     </Modal>
   );

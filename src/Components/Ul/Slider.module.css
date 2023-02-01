@@ -7,16 +7,20 @@
   z-index: -2;
   overflow: hidden;
   display: flex;
-  animation-name: changeI;
-  animation-duration: 2s;
+  animation-duration: 4s;
 }
 
-@keyframes changeI {
+.anim {
+  animation-name: anim;
+  animation-duration: 4s;
+}
+
+@keyframes anim {
   from {
-    width: 100%;
+    opacity: 0.9;
   }
   to {
-    width: 120%;
+    opacity: 1;
   }
 }
 
