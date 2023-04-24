@@ -10,4 +10,4 @@
 
 <a href="https://doner-house.netlify.app/"> The link to the page</a>
 
-<img src="https://i.ibb.co/mFpVMGG/doner.png" />
+<img src="https://i.ibb.co/598914L/doner.png" width=1000 height=800 />
